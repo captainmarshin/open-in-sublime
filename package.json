@@ -1,0 +1,57 @@
+{
+  "name": "open-in-sublime",
+  "displayName": "Open in Sublime",
+  "description": "Open any file or folder in Sublime Text from context menu",
+  "version": "1.0.0",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/captainmarshin/open-in-sublime.git"
+  },
+  "publisher": "captainmarshin",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "activationEvents": [
+    "onCommand:extension.openFileInSublime",
+    "onCommand:extension.openFolderInSublime"
+  ],
+  "categories": [
+    "Other"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.openFolderInSublime",
+        "title": "Open Folder in Sublime Text"
+      },
+      {
+        "command": "extension.openFileInSublime",
+        "title": "Open File in Sublime Text"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "extension.openFolderInSublime",
+          "when": "resourceScheme == 'file' && explorerResourceIsFolder",
+          "group": "navigation"
+        },
+        {
+          "command": "extension.openFileInSublime",
+          "when": "resourceScheme == 'file' && !explorerResourceIsFolder",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {},
+  "keywords": ["sublime", "open in sublime", "context menu", "sublime text", "open file", "open folder"],
+  "author": "captainmarshin",
+  "license": "MIT",
+  "type": "commonjs",
+  "devDependencies": {
+    "vscode": "^1.1.37"
+  }
+}
